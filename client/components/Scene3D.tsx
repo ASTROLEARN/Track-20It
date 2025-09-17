@@ -1,12 +1,14 @@
 import * as THREE from "three";
 import React, { useEffect, useRef } from "react";
 
-export function Scene3D({ height = 260, className }: { height?: number; className?: string }) {
+export function Scene3D({ height = 300, className }: { height?: number; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!ref.current) return;
-    const width = ref.current.clientWidth;
+    const container = ref.current;
+    container.style.height = `${height}px`;
+    const width = container.clientWidth || container.getBoundingClientRect().width || 300;
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
@@ -15,7 +17,9 @@ export function Scene3D({ height = 260, className }: { height?: number; classNam
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
     renderer.setSize(width, height);
-    ref.current.appendChild(renderer.domElement);
+    renderer.domElement.style.width = "100%";
+    renderer.domElement.style.height = "100%";
+    container.appendChild(renderer.domElement);
 
     const geometry = new THREE.TorusKnotGeometry(1.2, 0.4, 160, 24);
     const material = new THREE.MeshStandardMaterial({ color: new THREE.Color("hsl(258, 88%, 60%)"), metalness: 0.3, roughness: 0.15 });
@@ -40,8 +44,8 @@ export function Scene3D({ height = 260, className }: { height?: number; classNam
     animate();
 
     const onResize = () => {
-      if (!ref.current) return;
-      const w = ref.current.clientWidth;
+      if (!container) return;
+      const w = container.clientWidth || container.getBoundingClientRect().width || width;
       renderer.setSize(w, height);
       camera.aspect = w / height;
       camera.updateProjectionMatrix();
@@ -54,7 +58,7 @@ export function Scene3D({ height = 260, className }: { height?: number; classNam
       renderer.dispose();
       geometry.dispose();
       material.dispose();
-      ref.current?.removeChild(renderer.domElement);
+      container?.removeChild(renderer.domElement);
     };
   }, [height]);
 
