@@ -323,7 +323,7 @@ function FeatureLine({ children }: { children: React.ReactNode }) {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden rounded-xl border bg-gradient-to-br from-primary/5 via-background to-background p-6 sm:p-10">
+    <section className="relative overflow-hidden rounded-xl border bg-gradient-to-br from-primary/5 via-background to-background p-6 sm:p-10 min-h-[340px]">
       <div className="relative z-10 max-w-2xl">
         <p className="inline-flex items-center gap-2 rounded-full border bg-background/70 px-3 py-1 text-xs text-muted-foreground backdrop-blur">
           <ShieldCheck className="h-3.5 w-3.5" /> Mobile‑first • Secure •
