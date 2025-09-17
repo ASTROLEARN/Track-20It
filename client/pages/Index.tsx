@@ -70,7 +70,7 @@ export default function Index() {
     <div className="space-y-16">
       <Hero />
 
-      <section className="grid gap-6 lg:grid-cols-2">
+      <section id="features" className="grid gap-6 lg:grid-cols-2">
         <Card className="relative overflow-hidden">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-xl">
