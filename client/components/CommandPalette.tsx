@@ -40,6 +40,8 @@ export function CommandPalette() {
                 <Command.Item onSelect={() => { navigate("/"); setOpen(false); }} className="flex cursor-pointer items-center gap-2 px-3 py-2"><Home className="h-4 w-4"/> Home</Command.Item>
                 <Command.Item onSelect={() => { navigate("/dashboard"); setOpen(false); }} className="flex cursor-pointer items-center gap-2 px-3 py-2"><LayoutDashboard className="h-4 w-4"/> Dashboard</Command.Item>
                 <Command.Item onSelect={() => { navigate("/setup"); setOpen(false); }} className="flex cursor-pointer items-center gap-2 px-3 py-2"><SlidersHorizontal className="h-4 w-4"/> Setup Session</Command.Item>
+                <Command.Item onSelect={() => { navigate("/teacher"); setOpen(false); }} className="flex cursor-pointer items-center gap-2 px-3 py-2">Teacher</Command.Item>
+                <Command.Item onSelect={() => { navigate("/notifications"); setOpen(false); }} className="flex cursor-pointer items-center gap-2 px-3 py-2">Notifications</Command.Item>
               </Command.Group>
               <Command.Group heading="Theme">
                 <Command.Item onSelect={() => { setTheme("light"); setOpen(false); }} className="flex cursor-pointer items-center gap-2 px-3 py-2"><Sun className="h-4 w-4"/> Light</Command.Item>
