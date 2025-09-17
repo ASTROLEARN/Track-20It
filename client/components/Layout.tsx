@@ -10,6 +10,7 @@ export function Layout(props: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-background to-background/60">
       <header className="sticky top-0 z-40 border-b backdrop-blur supports-[backdrop-filter]:bg-background/80">
+        <RouteProgress />
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link to="/" className="group flex items-center gap-2">
             <span className="relative flex h-8 w-8 items-center justify-center rounded-md bg-gradient-to-br from-primary to-violet-500 text-primary-foreground shadow-sm">
