@@ -40,4 +40,7 @@ const App = () => (
   </QueryClientProvider>
 );
 
+import { registerSW } from "@/pwa";
+
 createRoot(document.getElementById("root")!).render(<App />);
+registerSW();
