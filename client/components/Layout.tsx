@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { CommandPalette } from "@/components/CommandPalette";
 import { cn } from "@/lib/utils";
 import { Moon, Sun, ScanQrCode } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -23,6 +24,9 @@ export function Layout(props: { children: React.ReactNode }) {
             <NavItem to="/dashboard">Dashboard</NavItem>
           </nav>
           <div className="flex items-center gap-2">
+            <div className="hidden sm:block">
+              <CommandPalette />
+            </div>
             <Button
               aria-label={
                 theme === "dark"
