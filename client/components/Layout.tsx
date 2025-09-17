@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { CommandPalette } from "@/components/CommandPalette";
+import { RouteProgress } from "@/components/RouteProgress";
 import { cn } from "@/lib/utils";
 import { Moon, Sun, ScanQrCode } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -23,6 +24,7 @@ export function Layout(props: { children: React.ReactNode }) {
           <nav className="hidden items-center gap-1 md:flex">
             <NavItem to="/">Home</NavItem>
             <NavItem to="/dashboard">Dashboard</NavItem>
+            <NavItem to="/setup">Setup</NavItem>
           </nav>
           <div className="flex items-center gap-2">
             <div className="hidden sm:block">
