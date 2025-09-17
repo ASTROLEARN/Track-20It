@@ -26,6 +26,8 @@ export function Layout(props: { children: React.ReactNode }) {
             <NavItem to="/dashboard">Dashboard</NavItem>
             <NavItem to="/setup">Setup</NavItem>
             <NavItem to="/streaks">Streaks</NavItem>
+            <NavItem to="/teacher">Teacher</NavItem>
+            <NavItem to="/notifications">Notifications</NavItem>
           </nav>
           <div className="flex items-center gap-2">
             <div className="hidden sm:block">
