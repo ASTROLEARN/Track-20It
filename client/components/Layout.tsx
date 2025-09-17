@@ -15,7 +15,7 @@ export function Layout(props: { children: React.ReactNode }) {
               <ScanQrCode className="h-5 w-5" />
             </span>
             <span className="bg-gradient-to-r from-primary to-violet-500 bg-clip-text text-base font-bold text-transparent sm:text-lg">
-              Smart Curriculum
+              Track it
             </span>
           </Link>
           <nav className="hidden items-center gap-1 md:flex">
