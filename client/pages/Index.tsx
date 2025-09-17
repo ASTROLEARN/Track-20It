@@ -347,8 +347,8 @@ function Hero() {
         </div>
       </div>
       <BackgroundOrbs />
-      <div className="absolute right-6 top-6 z-10 block w-[420px] max-w-[45vw] min-w-[240px] pointer-events-none">
-        <Scene3D height={300} className="w-full" />
+      <div className="absolute right-2 top-4 z-10 w-[240px] max-w-[35vw] min-w-[180px] pointer-events-none sm:right-6 sm:top-6 sm:w-[420px] sm:max-w-[45vw] sm:min-w-[240px] hidden sm:block">
+        <Scene3D height={200} className="w-full sm:h-[300px]" />
       </div>
     </section>
   );
