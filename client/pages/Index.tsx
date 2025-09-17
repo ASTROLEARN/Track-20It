@@ -23,6 +23,7 @@ import {
   ScanQrCode,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Scene3D } from "@/components/Scene3D";
 
 interface Student {
   id: number;
