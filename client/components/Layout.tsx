@@ -24,21 +24,34 @@ export function Layout(props: { children: React.ReactNode }) {
           </nav>
           <div className="flex items-center gap-2">
             <Button
-              aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+              aria-label={
+                theme === "dark"
+                  ? "Switch to light mode"
+                  : "Switch to dark mode"
+              }
               variant="outline"
               size="icon"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             >
-              {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              {theme === "dark" ? (
+                <Sun className="h-4 w-4" />
+              ) : (
+                <Moon className="h-4 w-4" />
+              )}
             </Button>
           </div>
         </div>
       </header>
-      <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">{props.children}</main>
+      <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+        {props.children}
+      </main>
       <footer className="border-t py-8">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-sm text-muted-foreground">
           <p className="flex flex-wrap items-center gap-x-2 gap-y-3">
-            <span>© {new Date().getFullYear()} Smart Curriculum Activity & Attendance</span>
+            <span>
+              © {new Date().getFullYear()} Smart Curriculum Activity &
+              Attendance
+            </span>
             <span className="hidden sm:inline">•</span>
             <span>Mobile-first • Secure • Accessible</span>
           </p>
