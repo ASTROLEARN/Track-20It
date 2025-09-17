@@ -12,32 +12,39 @@ import NotFound from "./pages/NotFound";
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const Setup = lazy(() => import("./pages/Setup"));
 const Streaks = lazy(() => import("./pages/Streaks"));
+const Teacher = lazy(() => import("./pages/Teacher"));
+const Notifications = lazy(() => import("./pages/Notifications"));
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Layout } from "@/components/Layout";
+import { ScheduleProvider } from "@/store/schedule";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Layout>
-            <Suspense fallback={<div className="p-6 text-sm text-muted-foreground">Loading…</div>}>
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/setup" element={<Setup />} />
-                <Route path="/streaks" element={<Streaks />} />
-                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </Suspense>
-          </Layout>
-        </BrowserRouter>
-      </TooltipProvider>
+      <ScheduleProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Layout>
+              <Suspense fallback={<div className="p-6 text-sm text-muted-foreground">Loading…</div>}>
+                <Routes>
+                  <Route path="/" element={<Index />} />
+                  <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/setup" element={<Setup />} />
+                  <Route path="/streaks" element={<Streaks />} />
+                  <Route path="/teacher" element={<Teacher />} />
+                  <Route path="/notifications" element={<Notifications />} />
+                  {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </Suspense>
+            </Layout>
+          </BrowserRouter>
+        </TooltipProvider>
+      </ScheduleProvider>
     </ThemeProvider>
   </QueryClientProvider>
 );
