@@ -2,26 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Moon, Sun, ScanQrCode } from "lucide-react";
-import { useEffect, useState } from "react";
-
-function useTheme() {
-  const [theme, setTheme] = useState<string>(() => {
-    if (typeof window === "undefined") return "light";
-    const stored = localStorage.getItem("theme");
-    if (stored) return stored;
-    const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-    return prefersDark ? "dark" : "light";
-  });
-
-  useEffect(() => {
-    const root = document.documentElement;
-    if (theme === "dark") root.classList.add("dark");
-    else root.classList.remove("dark");
-    localStorage.setItem("theme", theme);
-  }, [theme]);
-
-  return { theme, setTheme } as const;
-}
+import { useTheme } from "next-themes";
 
 export function Layout(props: { children: React.ReactNode }) {
   const { theme, setTheme } = useTheme();
