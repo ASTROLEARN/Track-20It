@@ -29,7 +29,13 @@ const App = () => (
           <Sonner />
           <BrowserRouter>
             <Layout>
-              <Suspense fallback={<div className="p-6 text-sm text-muted-foreground">Loading…</div>}>
+              <Suspense
+                fallback={
+                  <div className="p-6 text-sm text-muted-foreground">
+                    Loading…
+                  </div>
+                }
+              >
                 <Routes>
                   <Route path="/" element={<Index />} />
                   <Route path="/dashboard" element={<Dashboard />} />

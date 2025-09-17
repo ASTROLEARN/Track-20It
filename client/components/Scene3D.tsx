@@ -1,14 +1,21 @@
 import * as THREE from "three";
 import React, { useEffect, useRef } from "react";
 
-export function Scene3D({ height = 300, className }: { height?: number; className?: string }) {
+export function Scene3D({
+  height = 300,
+  className,
+}: {
+  height?: number;
+  className?: string;
+}) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!ref.current) return;
     const container = ref.current;
     container.style.height = `${height}px`;
-    const width = container.clientWidth || container.getBoundingClientRect().width || 300;
+    const width =
+      container.clientWidth || container.getBoundingClientRect().width || 300;
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
@@ -22,7 +29,11 @@ export function Scene3D({ height = 300, className }: { height?: number; classNam
     container.appendChild(renderer.domElement);
 
     const geometry = new THREE.TorusKnotGeometry(1.2, 0.4, 160, 24);
-    const material = new THREE.MeshStandardMaterial({ color: new THREE.Color("hsl(258, 88%, 60%)"), metalness: 0.3, roughness: 0.15 });
+    const material = new THREE.MeshStandardMaterial({
+      color: new THREE.Color("hsl(258, 88%, 60%)"),
+      metalness: 0.3,
+      roughness: 0.15,
+    });
     const mesh = new THREE.Mesh(geometry, material);
     scene.add(mesh);
 
@@ -45,7 +56,10 @@ export function Scene3D({ height = 300, className }: { height?: number; classNam
 
     const onResize = () => {
       if (!container) return;
-      const w = container.clientWidth || container.getBoundingClientRect().width || width;
+      const w =
+        container.clientWidth ||
+        container.getBoundingClientRect().width ||
+        width;
       renderer.setSize(w, height);
       camera.aspect = w / height;
       camera.updateProjectionMatrix();

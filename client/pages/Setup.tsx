@@ -1,7 +1,13 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 const schema = z.object({
@@ -17,7 +23,10 @@ const schema = z.object({
 type FormValues = z.infer<typeof schema>;
 
 export default function Setup() {
-  const form = useForm<FormValues>({ resolver: zodResolver(schema), defaultValues: { method: "qr" } });
+  const form = useForm<FormValues>({
+    resolver: zodResolver(schema),
+    defaultValues: { method: "qr" },
+  });
 
   const onSubmit = (values: FormValues) => {
     alert(`Session configured: ${JSON.stringify(values, null, 2)}`);
@@ -27,19 +36,32 @@ export default function Setup() {
     <Card className="max-w-2xl">
       <CardHeader>
         <CardTitle>Setup Attendance Session</CardTitle>
-        <CardDescription>Validated form with sensible defaults.</CardDescription>
+        <CardDescription>
+          Validated form with sensible defaults.
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <Field label="Course" error={form.formState.errors.course?.message}>
-            <input className="w-full rounded-md border bg-background px-3 py-2" {...form.register("course")} placeholder="ENG-101" />
+            <input
+              className="w-full rounded-md border bg-background px-3 py-2"
+              {...form.register("course")}
+              placeholder="ENG-101"
+            />
           </Field>
           <div className="grid gap-4 sm:grid-cols-2">
             <Field label="Room" error={form.formState.errors.room?.message}>
-              <input className="w-full rounded-md border bg-background px-3 py-2" {...form.register("room")} placeholder="A2" />
+              <input
+                className="w-full rounded-md border bg-background px-3 py-2"
+                {...form.register("room")}
+                placeholder="A2"
+              />
             </Field>
             <Field label="Method" error={form.formState.errors.method?.message}>
-              <select className="w-full rounded-md border bg-background px-3 py-2" {...form.register("method")}>
+              <select
+                className="w-full rounded-md border bg-background px-3 py-2"
+                {...form.register("method")}
+              >
                 <option value="qr">QR</option>
                 <option value="bt">Bluetooth</option>
                 <option value="wifi">Wi‑Fi</option>
@@ -49,10 +71,18 @@ export default function Setup() {
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             <Field label="Start" error={form.formState.errors.start?.message}>
-              <input type="time" className="w-full rounded-md border bg-background px-3 py-2" {...form.register("start")} />
+              <input
+                type="time"
+                className="w-full rounded-md border bg-background px-3 py-2"
+                {...form.register("start")}
+              />
             </Field>
             <Field label="End" error={form.formState.errors.end?.message}>
-              <input type="time" className="w-full rounded-md border bg-background px-3 py-2" {...form.register("end")} />
+              <input
+                type="time"
+                className="w-full rounded-md border bg-background px-3 py-2"
+                {...form.register("end")}
+              />
             </Field>
           </div>
           <Button type="submit">Save Session</Button>
@@ -62,7 +92,15 @@ export default function Setup() {
   );
 }
 
-function Field({ label, error, children }: { label: string; error?: string; children: React.ReactNode }) {
+function Field({
+  label,
+  error,
+  children,
+}: {
+  label: string;
+  error?: string;
+  children: React.ReactNode;
+}) {
   return (
     <label className="block text-sm">
       <div className="mb-1 font-medium">{label}</div>

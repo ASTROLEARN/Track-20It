@@ -1,4 +1,10 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useScheduleStore } from "@/store/schedule";
 import { z } from "zod";
@@ -25,43 +31,81 @@ export default function Teacher() {
     form.reset();
   };
 
-  const upcoming = [...schedules].sort((a,b)=> a.date.localeCompare(b.date) || a.start.localeCompare(b.start));
+  const upcoming = [...schedules].sort(
+    (a, b) => a.date.localeCompare(b.date) || a.start.localeCompare(b.start),
+  );
 
   return (
     <div className="space-y-8">
       <header>
-        <h1 className="text-2xl font-bold tracking-tight">Teacher • Schedule Classes</h1>
-        <p className="text-muted-foreground">Create class sessions; new entries appear in Notifications.</p>
+        <h1 className="text-2xl font-bold tracking-tight">
+          Teacher • Schedule Classes
+        </h1>
+        <p className="text-muted-foreground">
+          Create class sessions; new entries appear in Notifications.
+        </p>
       </header>
 
       <div className="grid gap-6 md:grid-cols-2">
         <Card>
           <CardHeader>
             <CardTitle>Schedule a Class</CardTitle>
-            <CardDescription>Validated form, updates Notifications</CardDescription>
+            <CardDescription>
+              Validated form, updates Notifications
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
               <Field label="Title" error={form.formState.errors.title?.message}>
-                <input className="w-full rounded-md border bg-background px-3 py-2" {...form.register("title")} placeholder="ENG‑101 Lecture" />
+                <input
+                  className="w-full rounded-md border bg-background px-3 py-2"
+                  {...form.register("title")}
+                  placeholder="ENG‑101 Lecture"
+                />
               </Field>
               <div className="grid gap-3 sm:grid-cols-2">
-                <Field label="Subject" error={form.formState.errors.subject?.message}>
-                  <input className="w-full rounded-md border bg-background px-3 py-2" {...form.register("subject")} placeholder="English" />
+                <Field
+                  label="Subject"
+                  error={form.formState.errors.subject?.message}
+                >
+                  <input
+                    className="w-full rounded-md border bg-background px-3 py-2"
+                    {...form.register("subject")}
+                    placeholder="English"
+                  />
                 </Field>
                 <Field label="Room" error={form.formState.errors.room?.message}>
-                  <input className="w-full rounded-md border bg-background px-3 py-2" {...form.register("room")} placeholder="A2" />
+                  <input
+                    className="w-full rounded-md border bg-background px-3 py-2"
+                    {...form.register("room")}
+                    placeholder="A2"
+                  />
                 </Field>
               </div>
               <div className="grid gap-3 sm:grid-cols-3">
                 <Field label="Date" error={form.formState.errors.date?.message}>
-                  <input type="date" className="w-full rounded-md border bg-background px-3 py-2" {...form.register("date")} />
+                  <input
+                    type="date"
+                    className="w-full rounded-md border bg-background px-3 py-2"
+                    {...form.register("date")}
+                  />
                 </Field>
-                <Field label="Start" error={form.formState.errors.start?.message}>
-                  <input type="time" className="w-full rounded-md border bg-background px-3 py-2" {...form.register("start")} />
+                <Field
+                  label="Start"
+                  error={form.formState.errors.start?.message}
+                >
+                  <input
+                    type="time"
+                    className="w-full rounded-md border bg-background px-3 py-2"
+                    {...form.register("start")}
+                  />
                 </Field>
                 <Field label="End" error={form.formState.errors.end?.message}>
-                  <input type="time" className="w-full rounded-md border bg-background px-3 py-2" {...form.register("end")} />
+                  <input
+                    type="time"
+                    className="w-full rounded-md border bg-background px-3 py-2"
+                    {...form.register("end")}
+                  />
                 </Field>
               </div>
               <Button type="submit">Add to Schedule</Button>
@@ -77,15 +121,26 @@ export default function Teacher() {
           <CardContent>
             <ul className="space-y-2 text-sm">
               {upcoming.length === 0 && (
-                <li className="text-muted-foreground">No classes scheduled yet.</li>
+                <li className="text-muted-foreground">
+                  No classes scheduled yet.
+                </li>
               )}
               {upcoming.map((c) => (
-                <li key={c.id} className="flex items-center justify-between rounded-md border p-3">
+                <li
+                  key={c.id}
+                  className="flex items-center justify-between rounded-md border p-3"
+                >
                   <div>
-                    <div className="font-medium">{c.title} • {c.subject}</div>
-                    <div className="text-muted-foreground">{c.date} • {c.start}–{c.end} • Room {c.room}</div>
+                    <div className="font-medium">
+                      {c.title} • {c.subject}
+                    </div>
+                    <div className="text-muted-foreground">
+                      {c.date} • {c.start}–{c.end} • Room {c.room}
+                    </div>
                   </div>
-                  <span className="rounded-full bg-muted px-2 py-0.5 text-xs">scheduled</span>
+                  <span className="rounded-full bg-muted px-2 py-0.5 text-xs">
+                    scheduled
+                  </span>
                 </li>
               ))}
             </ul>
@@ -96,7 +151,15 @@ export default function Teacher() {
   );
 }
 
-function Field({ label, error, children }: { label: string; error?: string; children: React.ReactNode }) {
+function Field({
+  label,
+  error,
+  children,
+}: {
+  label: string;
+  error?: string;
+  children: React.ReactNode;
+}) {
   return (
     <label className="block text-sm">
       <div className="mb-1 font-medium">{label}</div>

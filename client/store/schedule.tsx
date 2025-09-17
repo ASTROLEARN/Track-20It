@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 
 export type Schedule = {
   id: string;
@@ -47,7 +53,10 @@ function useLocal<T>(key: string, init: T) {
 }
 
 export function ScheduleProvider({ children }: { children: React.ReactNode }) {
-  const [schedules, setSchedules] = useLocal<Schedule[]>("trackit.schedules", []);
+  const [schedules, setSchedules] = useLocal<Schedule[]>(
+    "trackit.schedules",
+    [],
+  );
   const [notices, setNotices] = useLocal<Notice[]>("trackit.notices", []);
 
   const addSchedule: Store["addSchedule"] = (payload) => {
@@ -67,15 +76,20 @@ export function ScheduleProvider({ children }: { children: React.ReactNode }) {
     setNotices([n, ...notices]);
   };
 
-  const markAllRead = () => setNotices(notices.map((n) => ({ ...n, read: true })));
+  const markAllRead = () =>
+    setNotices(notices.map((n) => ({ ...n, read: true })));
   const clearNotices = () => setNotices([]);
 
-  const value = useMemo<Store>(() => ({ schedules, notices, addSchedule, markAllRead, clearNotices }), [schedules, notices]);
+  const value = useMemo<Store>(
+    () => ({ schedules, notices, addSchedule, markAllRead, clearNotices }),
+    [schedules, notices],
+  );
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }
 
 export function useScheduleStore() {
   const ctx = useContext(Ctx);
-  if (!ctx) throw new Error("useScheduleStore must be used within ScheduleProvider");
+  if (!ctx)
+    throw new Error("useScheduleStore must be used within ScheduleProvider");
   return ctx;
 }
