@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Scene3D } from "@/components/Scene3D";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface Student {
   id: number;
@@ -82,13 +83,30 @@ export default function Index() {
     <div className="space-y-16">
       <Hero />
 
-      <section id="features" className="grid gap-6 lg:grid-cols-2">
-        <Card className="relative overflow-hidden">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-xl">
-              <ScanQrCode className="h-5 w-5 text-primary" /> Automated
-              Attendance
-            </CardTitle>
+      <motion.section 
+        id="features" 
+        className="grid gap-6 lg:grid-cols-2"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+      >
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          whileHover={{ y: -5, transition: { duration: 0.2 } }}
+        >
+          <Card className="relative overflow-hidden hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-xl">
+                <motion.div
+                  animate={{ rotate: [0, 10, -10, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+                >
+                  <ScanQrCode className="h-5 w-5 text-primary" />
+                </motion.div>
+                Automated Attendance
+              </CardTitle>
             <CardDescription>
               Choose the method that fits your infrastructure: QR,
               Bluetooth/Wi‑Fi proximity, or Face Recognition. Hybrid models
@@ -118,10 +136,27 @@ export default function Index() {
                       Time‑bound session QR
                     </p>
                     <div className="mt-3 flex items-center justify-center rounded-md bg-muted p-6">
-                      <QrCode className="h-24 w-24" aria-hidden />
+                      <motion.div
+                        animate={{ 
+                          scale: [1, 1.05, 1],
+                          rotate: [0, 2, -2, 0]
+                        }}
+                        transition={{ 
+                          duration: 3, 
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }}
+                      >
+                        <QrCode className="h-24 w-24" aria-hidden />
+                      </motion.div>
                     </div>
                     <Link to="/qr-generator">
-                      <Button className="mt-4 w-full">Generate QR</Button>
+                      <motion.div
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        <Button className="mt-4 w-full">Generate QR</Button>
+                      </motion.div>
                     </Link>
                   </div>
                   <ul className="space-y-2 text-sm">
@@ -172,6 +207,7 @@ export default function Index() {
             </Tabs>
           </CardContent>
         </Card>
+        </motion.div>
 
         <Card>
           <CardHeader>
@@ -223,7 +259,7 @@ export default function Index() {
             </div>
           </CardContent>
         </Card>
-      </section>
+      </motion.section>
 
       <section className="grid gap-6 lg:grid-cols-3">
         <Card className="lg:col-span-2">
