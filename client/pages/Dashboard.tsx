@@ -68,7 +68,9 @@ export default function Dashboard() {
             <div className="rounded-md border p-3 text-sm">
               Session: ENG-101 • Room A2 • 10:00–10:50
             </div>
-            <Button className="w-full">Open Attendance Screen</Button>
+            <Link to="/attendance-screen">
+              <Button className="w-full">Open Attendance Screen</Button>
+            </Link>
           </CardContent>
         </Card>
 

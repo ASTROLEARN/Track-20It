@@ -14,6 +14,16 @@ const Setup = lazy(() => import("./pages/Setup"));
 const Streaks = lazy(() => import("./pages/Streaks"));
 const Teacher = lazy(() => import("./pages/Teacher"));
 const Notifications = lazy(() => import("./pages/Notifications"));
+
+// New pages for enhanced functionality
+const AttendanceScreen = lazy(() => import("./pages/AttendanceScreen"));
+const QRGenerator = lazy(() => import("./pages/QRGenerator"));
+const BluetoothSetup = lazy(() => import("./pages/BluetoothSetup"));
+const WifiController = lazy(() => import("./pages/WifiController"));
+const FaceRecognition = lazy(() => import("./pages/FaceRecognition"));
+const FocusSessions = lazy(() => import("./pages/FocusSessions"));
+const DemoMode = lazy(() => import("./pages/DemoMode"));
+
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Layout } from "@/components/Layout";
 import { ScheduleProvider } from "@/store/schedule";
@@ -43,6 +53,16 @@ const App = () => (
                   <Route path="/streaks" element={<Streaks />} />
                   <Route path="/teacher" element={<Teacher />} />
                   <Route path="/notifications" element={<Notifications />} />
+                  
+                  {/* New enhanced pages */}
+                  <Route path="/attendance-screen" element={<AttendanceScreen />} />
+                  <Route path="/qr-generator" element={<QRGenerator />} />
+                  <Route path="/bluetooth-setup" element={<BluetoothSetup />} />
+                  <Route path="/wifi-controller" element={<WifiController />} />
+                  <Route path="/face-recognition" element={<FaceRecognition />} />
+                  <Route path="/focus-sessions" element={<FocusSessions />} />
+                  <Route path="/demo-mode" element={<DemoMode />} />
+                  
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                   <Route path="*" element={<NotFound />} />
                 </Routes>

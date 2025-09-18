@@ -120,7 +120,9 @@ export default function Index() {
                     <div className="mt-3 flex items-center justify-center rounded-md bg-muted p-6">
                       <QrCode className="h-24 w-24" aria-hidden />
                     </div>
-                    <Button className="mt-4 w-full">Generate QR</Button>
+                    <Link to="/qr-generator">
+                      <Button className="mt-4 w-full">Generate QR</Button>
+                    </Link>
                   </div>
                   <ul className="space-y-2 text-sm">
                     <FeatureLine>Low cost • rapid deployment</FeatureLine>
@@ -141,7 +143,9 @@ export default function Index() {
                     Privacy‑first: device identifiers only
                   </FeatureLine>
                 </ul>
-                <Button className="mt-4">Configure Beacons</Button>
+                <Link to="/bluetooth-setup">
+                  <Button className="mt-4">Configure Beacons</Button>
+                </Link>
               </TabsContent>
               <TabsContent value="wifi">
                 <ul className="grid gap-2 text-sm sm:grid-cols-2">
@@ -150,7 +154,9 @@ export default function Index() {
                   <FeatureLine>Signal‑strength thresholds</FeatureLine>
                   <FeatureLine>Secure MAC hashing</FeatureLine>
                 </ul>
-                <Button className="mt-4">Link Wi‑Fi Controller</Button>
+                <Link to="/wifi-controller">
+                  <Button className="mt-4">Link Wi‑Fi Controller</Button>
+                </Link>
               </TabsContent>
               <TabsContent value="face">
                 <ul className="grid gap-2 text-sm sm:grid-cols-2">
@@ -159,7 +165,9 @@ export default function Index() {
                   <FeatureLine>Edge or cloud model hosting</FeatureLine>
                   <FeatureLine>Best for exam halls and labs</FeatureLine>
                 </ul>
-                <Button className="mt-4">Open Enrollment</Button>
+                <Link to="/face-recognition">
+                  <Button className="mt-4">Open Enrollment</Button>
+                </Link>
               </TabsContent>
             </Tabs>
           </CardContent>
@@ -242,7 +250,9 @@ export default function Index() {
             </div>
             <div className="mt-4 flex gap-2">
               <Button variant="secondary">Shuffle</Button>
-              <Button>Start 10‑minute Focus</Button>
+              <Link to="/focus-sessions">
+                <Button>Start 10‑minute Focus</Button>
+              </Link>
             </div>
           </CardContent>
         </Card>
@@ -338,7 +348,7 @@ function Hero() {
           integrated daily routines.
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
-          <Link to="/dashboard">
+          <Link to="/demo-mode">
             <Button className="shadow-sm">Start Demo</Button>
           </Link>
           <a href="#features">
